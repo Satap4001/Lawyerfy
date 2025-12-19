@@ -40,4 +40,26 @@
         return $resultado;
     }
 
+    function checkLogIn($email, $userPass){
+        $pdo = connectDatabase();
+        
+        $stmt = $pdo->prepare("SELECT * FROM abogado WHERE email = :email AND contrasena = :contrasena");
+        $stmt->execute(["email" => $email , "contrasena" => $userPass]);
+        $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if($usuario){
+            return $usuario;
+        }
+        
+        $stmt = $pdo->prepare("SELECT * FROM cliente WHERE email = :email AND contrasena = :contrasena");
+        $stmt->execute(["email" => $email , "contrasena" => $userPass]);
+        $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if($usuario){
+            return $usuario;
+        }
+        
+        return null;
+    }
+
 ?>
