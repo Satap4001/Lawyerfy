@@ -84,6 +84,7 @@
     </form>
   </div>
 
+  <!--SE ENCARGA DE CAMBIAR AL FORMULARIO QUE SE DESEA-->
   <script>
     const btnCliente = document.getElementById('btnCliente');
     const btnAbogado = document.getElementById('btnAbogado');
