@@ -15,7 +15,8 @@
     function getAllEspecialidades (){
         $pdo = connectDatabase();
         $stmt = $pdo->prepare("SELECT * FROM especialidad");
-        $resultado =  $stmt->execute();
+        $stmt->execute();
+        $resultado = $stmt->fetchAll();
         return $resultado;
     }
 
@@ -40,6 +41,18 @@
         return $resultado;
     }
 
+    function newAbogado($newAboName, $newAboSurname, $newAboEmail , $newAboPass, $newAboTel, $newAboGen){
+        $pdo = connectDatabase();
+        $stmt = $pdo->prepare("INSERT INTO abogado (nombre, apellido, email, contrasena, telefono, genero) VALUES (:nombre , :apellido , :email , :contrasena , :telefono, :genero) ");
+        $stmt->execute([":nombre" => $newAboName, ":apellido" => $newAboSurname, ":email" => $newAboEmail , ":contrasena" => $newAboPass, ":telefono" => $newAboTel, ":genero" => $newAboGen ]);
+    }
+
+    function newCliente($newCliName, $newCliSurname, $newCliEmail , $newCliPass, $newCliTel, $newCliGen){
+        $pdo = connectDatabase();
+        $stmt = $pdo->prepare("INSERT INTO cliente (nombre, apellido, email, contrasena, telefono, genero) VALUES (:nombre , :apellido , :email , :contrasena, :telefono, :genero) ");
+        $stmt->execute([":nombre" => $newCliName, ":apellido" => $newCliSurname, ":email" => $newCliEmail , ":contrasena" => $newCliPass, ":telefono" => $newCliTel, ":genero" => $newCliGen ]);
+    }
+
     function checkLogIn($email, $userPass){
         $pdo = connectDatabase();
         
@@ -61,5 +74,7 @@
         
         return null;
     }
+
+
 
 ?>
