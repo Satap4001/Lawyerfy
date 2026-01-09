@@ -41,16 +41,16 @@
         return $resultado;
     }
 
-    function newAbogado($newAboName, $newAboSurname, $newAboEmail , $newAboPass, $newAboTel, $newAboGen){
+    function newAbogado($newAboName, $newAboSurname, $newAboEmail , $newAboPass, $newAboTel, $newAboGen, $newAboLocal){
         $pdo = connectDatabase();
-        $stmt = $pdo->prepare("INSERT INTO abogado (nombre, apellido, email, contrasena, telefono, genero) VALUES (:nombre , :apellido , :email , :contrasena , :telefono, :genero) ");
-        $stmt->execute([":nombre" => $newAboName, ":apellido" => $newAboSurname, ":email" => $newAboEmail , ":contrasena" => $newAboPass, ":telefono" => $newAboTel, ":genero" => $newAboGen ]);
+        $stmt = $pdo->prepare("INSERT INTO abogado (nombre, apellido, email, contrasena, telefono, genero, localidad) VALUES (:nombre , :apellido , :email , :contrasena , :telefono, :genero, :localidad) ");
+        $stmt->execute([":nombre" => $newAboName, ":apellido" => $newAboSurname, ":email" => $newAboEmail , ":contrasena" => $newAboPass, ":telefono" => $newAboTel, ":genero" => $newAboGen, ":localidad" => $newAboLocal ]);
     }
 
-    function newCliente($newCliName, $newCliSurname, $newCliEmail , $newCliPass, $newCliTel, $newCliGen){
+    function newCliente($newCliName, $newCliSurname, $newCliEmail , $newCliPass, $newCliTel, $newCliGen, $newCliLocal){
         $pdo = connectDatabase();
-        $stmt = $pdo->prepare("INSERT INTO cliente (nombre, apellido, email, contrasena, telefono, genero) VALUES (:nombre , :apellido , :email , :contrasena, :telefono, :genero) ");
-        $stmt->execute([":nombre" => $newCliName, ":apellido" => $newCliSurname, ":email" => $newCliEmail , ":contrasena" => $newCliPass, ":telefono" => $newCliTel, ":genero" => $newCliGen ]);
+        $stmt = $pdo->prepare("INSERT INTO cliente (nombre, apellido, email, contrasena, telefono, genero, localidad) VALUES (:nombre , :apellido , :email , :contrasena, :telefono, :genero, :localidad) ");
+        $stmt->execute([":nombre" => $newCliName, ":apellido" => $newCliSurname, ":email" => $newCliEmail , ":contrasena" => $newCliPass, ":telefono" => $newCliTel, ":genero" => $newCliGen, ":localidad" => $newCliLocal ]);
     }
 
     function checkLogIn($email, $userPass){
