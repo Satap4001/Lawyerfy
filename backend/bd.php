@@ -41,10 +41,10 @@
         return $resultado;
     }
 
-    function newAbogado($newAboName, $newAboSurname, $newAboEmail , $newAboPass, $newAboTel, $newAboGen, $newAboLocal){
+    function newAbogado($newAboName, $newAboSurname, $newAboEmail , $newAboPass, $newAboNac, $newAboTel, $newAboGen, $newAboLocal){
         $pdo = connectDatabase();
-        $stmt = $pdo->prepare("INSERT INTO abogado (nombre, apellido, email, contrasena, telefono, genero, localidad) VALUES (:nombre , :apellido , :email , :contrasena , :telefono, :genero, :localidad) ");
-        $stmt->execute([":nombre" => $newAboName, ":apellido" => $newAboSurname, ":email" => $newAboEmail , ":contrasena" => $newAboPass, ":telefono" => $newAboTel, ":genero" => $newAboGen, ":localidad" => $newAboLocal ]);
+        $stmt = $pdo->prepare("INSERT INTO abogado (nombre, apellido, email, contrasena, nacionalidad, telefono, genero, localidad) VALUES (:nombre , :apellido , :email , :contrasena , :nacionalidad, :telefono, :genero, :localidad) ");
+        $stmt->execute([":nombre" => $newAboName, ":apellido" => $newAboSurname, ":email" => $newAboEmail , ":contrasena" => $newAboPass, ":nacionalidad" => $newAboNac, ":telefono" => $newAboTel, ":genero" => $newAboGen, ":localidad" => $newAboLocal ]);
     }
 
     function newCliente($newCliName, $newCliSurname, $newCliEmail , $newCliPass, $newCliTel, $newCliGen, $newCliLocal){
