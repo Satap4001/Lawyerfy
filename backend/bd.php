@@ -22,35 +22,47 @@
 
     function getEspecialidadById($id){
         $pdo = connectDatabase();
-        $stmt= $pdo->prepare("SELECT * FROM especialidad where id like :id");
-        $resultado = $stmt->execute(["id" => $id]);
+        $stmt= $pdo->prepare("SELECT * FROM especialidad where id = :id");
+        $stmt->execute(["id" => $id]);
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
         return $resultado;
     }
 
     function getHistoricoByUserId($id){
         $pdo = connectDatabase();
-        $stmt = $pdo->prepare("SELECT * FROM historico where cliente_id like :id");
-        $resultado = $stmt->execute(["id" => $id]);
+        $stmt = $pdo->prepare("SELECT * FROM historico where cliente_id = :id");
+        $stmt->execute(["id" => $id]);
+        $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $resultado;
     }
 
     function getAbogadoByEspecialidadId($id){
         $pdo = connectDatabase();
-        $stmt = $pdo->prepare("SELECT * FROM abogado where id_especialidad like :id");
-        $resultado = $stmt->execute(["id" => $id]);
+        $stmt = $pdo->prepare("SELECT * FROM abogado where id_especialidad = :id");
+        $stmt->execute(["id" => $id]);
+        $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $resultado;
     }
 
     function newAbogado($newAboName, $newAboSurname, $newAboEmail , $newAboPass, $newAboTel, $newAboGen, $newAboLocal){
+        
         $pdo = connectDatabase();
+        if (emailExiste($newAboEmail)){
+            return "EL EMAIL YA ESTÁ REGISTRADO";
+        }
         $stmt = $pdo->prepare("INSERT INTO abogado (nombre, apellido, email, contrasena, telefono, genero, localidad) VALUES (:nombre , :apellido , :email , :contrasena , :telefono, :genero, :localidad) ");
         $stmt->execute([":nombre" => $newAboName, ":apellido" => $newAboSurname, ":email" => $newAboEmail , ":contrasena" => $newAboPass, ":telefono" => $newAboTel, ":genero" => $newAboGen, ":localidad" => $newAboLocal ]);
+        return "REGISTRO CORRECTO";
     }
 
     function newCliente($newCliName, $newCliSurname, $newCliEmail , $newCliPass, $newCliTel, $newCliGen, $newCliLocal){
         $pdo = connectDatabase();
+        if (emailExiste($newCliEmail)){
+            return "EL EMAIL YA ESTÁ REGISTRADO";
+        }
         $stmt = $pdo->prepare("INSERT INTO cliente (nombre, apellido, email, contrasena, telefono, genero, localidad) VALUES (:nombre , :apellido , :email , :contrasena, :telefono, :genero, :localidad) ");
         $stmt->execute([":nombre" => $newCliName, ":apellido" => $newCliSurname, ":email" => $newCliEmail , ":contrasena" => $newCliPass, ":telefono" => $newCliTel, ":genero" => $newCliGen, ":localidad" => $newCliLocal ]);
+        return "REGISTRO CORRECTO";
     }
 
     function checkLogIn($email, $userPass){
@@ -74,6 +86,18 @@
         
         return null;
     }
+
+    function emailExiste($email){
+        $pdo = connectDatabase();
+        $stmt = $pdo->prepare("
+            SELECT email FROM cliente WHERE email = :email
+            UNION
+            SELECT email FROM abogado WHERE email = :email
+        ");
+        $stmt->execute(["email" => $email]);
+        return $stmt->fetch() ? true : false;
+    }
+
 
 
 
