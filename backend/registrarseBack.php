@@ -45,26 +45,23 @@ if ($localidad === '') {
 
 
 // INSERCIÓN DE DATOS EN LA BASE DE DATOS
-    //COMPROBAR QUE NO ESTE EL USUARIO YA REGISTRADO CON ESE EMAIL
+$mensaje = "";
 if ($tipo === 'Cliente') {
-    newCliente($nombre, $apellido, $email, $contraseña, $telefono, $genero, $localidad);
+    $mensaje = newCliente($nombre, $apellido, $email, $contraseña, $telefono, $genero, $localidad);
 }else if ($tipo === 'Abogado') {
     //LA ESPECIALIDAD ES UNA TABLA APARTE
     newAbogado($nombre, $apellido, $email, $contraseña, $nacionalidad, $telefono, $genero, $localidad);
 }
 
 // ===== EJEMPLO DE SALIDA =====
-echo "<h2>Registro completado</h2>";
-echo "<strong>Tipo:</strong> $tipo <br>";
-echo "<strong>Nombre:</strong> $nombre $apellido <br>";
-echo "<strong>Email:</strong> $email <br>";
-echo "<strong>Contraseña:</strong> $contraseña <br>";
-echo "<strong>Teléfono:</strong> $telefono <br>";
-echo "<strong>Género:</strong> $genero <br>";
-echo "<strong>Localidad:</strong> $localidad <br>";
+session_start();
 
-if ($tipo === 'Abogado') {
-    echo "<strong>Nacionalidad:</strong> $nacionalidad <br>";
-    echo "<strong>Especialización:</strong> $especializacion <br>";
+if ($mensaje != "EL EMAIL YA ESTÁ REGISTRADO") {
+    header("Location: ../frontend/home.php");
+    exit();
+} else {
+    $_SESSION['error'] = "El email ya está registrado. Intenta con otro.";
+    header("Location: ../frontend/registrarse.php");
+    exit();
 }
 ?>

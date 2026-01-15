@@ -8,6 +8,8 @@
 </head>
 <body>
   <div class="container">
+      
+
     <h2>Crear cuenta</h2>
 
     <div class="tipoCuenta">
@@ -15,7 +17,14 @@
       <button id="btnAbogado">Abogado</button>
     </div>
 
-    <!-- FORMULARIO CLIENTE -->
+    <!-- FORMULARIO CLIENTE --> 
+    <?php //PARA MOSTRAR MENSAJE SI RECIBE UN ERROR
+    session_start();
+    if (isset($_SESSION['error'])) {
+        echo "<div class='error'>".$_SESSION['error']."</div>";
+        unset($_SESSION['error']); // para que el mensaje desaparezca después de mostrarlo
+    }
+    ?>
     <form id="cliente" class="active" action = "../backend/registrarseBack.php" method="post">
       <label>Nombre *</label>
       <input type="text" name = "nombre" required>
