@@ -50,14 +50,14 @@ if ($tipo === 'Cliente') {
     $mensaje = newCliente($nombre, $apellido, $email, $contraseña, $telefono, $genero, $localidad);
 }else if ($tipo === 'Abogado') {
     //LA ESPECIALIDAD ES UNA TABLA APARTE
-    newAbogado($nombre, $apellido, $email, $contraseña, $nacionalidad, $telefono, $genero, $localidad);
+    $mensaje = newAbogado($nombre, $apellido, $email, $contraseña, $nacionalidad, $telefono, $genero, $localidad, $especializacion);
 }
 
 // ===== EJEMPLO DE SALIDA =====
 session_start();
 
 if ($mensaje != "EL EMAIL YA ESTÁ REGISTRADO") {
-    header("Location: ../frontend/home.php");
+    header("Location: ../frontend/index.php");
     exit();
 } else {
     $_SESSION['error'] = "El email ya está registrado. Intenta con otro.";
