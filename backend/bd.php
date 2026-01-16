@@ -44,14 +44,17 @@
         return $resultado;
     }
 
-    function newAbogado($newAboName, $newAboSurname, $newAboEmail , $newAboPass, $newAboTel, $newAboGen, $newAboLocal){
+    function newAbogado($newAboName, $newAboSurname, $newAboEmail , $newAboPass, $newAboTel, $newAboGen, $newAboLocal, $newAboEsp){
         
         $pdo = connectDatabase();
         if (emailExiste($newAboEmail)){
             return "EL EMAIL YA ESTÁ REGISTRADO";
         }
-        $stmt = $pdo->prepare("INSERT INTO abogado (nombre, apellido, email, contrasena, telefono, genero, localidad) VALUES (:nombre , :apellido , :email , :contrasena , :telefono, :genero, :localidad) ");
-        $stmt->execute([":nombre" => $newAboName, ":apellido" => $newAboSurname, ":email" => $newAboEmail , ":contrasena" => $newAboPass, ":telefono" => $newAboTel, ":genero" => $newAboGen, ":localidad" => $newAboLocal ]);
+        $stmt2 = $pdo->prepare("SELECT id FROM especialidades WHERE nombre = :nombre");
+        $stmt2->execute(["nombre" => $newAboEsp]);
+        $resultadoEsp = $stmt2->fetch();
+        $stmt = $pdo->prepare("INSERT INTO abogado (nombre, apellido, email, contrasena, telefono, genero, localidad, id_especialidad) VALUES (:nombre , :apellido , :email , :contrasena , :telefono, :genero, :localidad , :id_especialidad) ");
+        $stmt->execute([":nombre" => $newAboName, ":apellido" => $newAboSurname, ":email" => $newAboEmail , ":contrasena" => $newAboPass, ":telefono" => $newAboTel, ":genero" => $newAboGen, ":localidad" => $newAboLocal, ":id_especialidad" => $newAboEsp ]);
         return "REGISTRO CORRECTO";
     }
 
