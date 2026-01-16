@@ -1,81 +1,98 @@
 * {
-      box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-    body {
-      background: #f4f6f8;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+body {
+  background: #f4f6f8;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh; /* Permite que el body sea más alto que la ventana si hace falta */
+  display: flex;
+  justify-content: center;
+  /* Cambiamos align-items: center a flex-start para que no corte en vertical */
+  align-items: flex-start;
+  padding-top: 50px; /* Opcional: espacio superior */
+}
 
-    .container {
-      background: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      width: 100%;
-      max-width: 450px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    }
+.container {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
 
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
 
-    .tipoCuenta {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
+.tipoCuenta {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
 
-    .tipoCuenta button {
-      flex: 1;
-      padding: 10px;
-      border: none;
-      cursor: pointer;
-      border-radius: 6px;
-      background: #e0e0e0;
-      font-weight: bold;
-    }
+.tipoCuenta button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  background: #e0e0e0;
+  font-weight: bold;
+}
 
-    .tipoCuenta button.active {
-      background: #007bff;
-      color: white;
-    }
+.tipoCuenta button.active {
+  background: #007bff;
+  color: white;
+}
 
-    form {
-      display: none;
-    }
+form {
+  display: none;
+}
 
-    form.active {
-      display: block;
-    }
+form.active {
+  display: block;
+}
 
-    label {
-      display: block;
-      margin-top: 12px;
-      font-weight: bold;
-    }
+label {
+  display: block;
+  margin-top: 12px;
+  font-weight: bold;
+}
 
-    input, select {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
+input,
+select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
 
-    .submit-btn {
-      margin-top: 20px;
-      width: 100%;
-      padding: 10px;
-      border: none;
-      border-radius: 6px;
-      background: #28a745;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-    }
+.submit-btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background: #28a745;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.error {
+  background-color: #f8d7da; /* fondo rojo claro */
+  color: #721c24; /* texto rojo oscuro */
+  border: 1px solid #f5c6cb; /* borde suave */
+  padding: 12px 15px; /* espacio interno */
+  border-radius: 6px; /* esquinas redondeadas */
+  margin-top: 15px; /* separacion respecto a otros elementos */
+  font-size: 14px;
+  text-align: center; /* opcional: centrar el texto */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* un toque de sombra */
+}
