@@ -1,32 +1,43 @@
+:root {
+  --blue: #1e3a8a;
+  --blue-hover: #172554;
+  --light-blue: #f8fafc;
+  --dark: #0f172a;
+  --gray: #475569;
+  --white: #ffffff;
+  --error-bg: #fee2e2;
+  --error-text: #991b1b;
+}
+
 * {
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
 }
 
 body {
-  background: #f4f6f8;
+  background: var(--light-blue);
   margin: 0;
   padding: 0;
-  min-height: 100vh; /* Permite que el body sea más alto que la ventana si hace falta */
+  min-height: 100vh;
   display: flex;
   justify-content: center;
-  /* Cambiamos align-items: center a flex-start para que no corte en vertical */
   align-items: flex-start;
-  padding-top: 50px; /* Opcional: espacio superior */
+  padding-top: 50px;
 }
 
 .container {
-  background: #fff;
+  background: var(--white);
   padding: 30px;
-  border-radius: 10px;
+  border-radius: 16px;
   width: 100%;
   max-width: 450px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.15);
 }
 
 h2 {
   text-align: center;
   margin-bottom: 20px;
+  color: var(--blue);
 }
 
 .tipoCuenta {
@@ -38,16 +49,19 @@ h2 {
 .tipoCuenta button {
   flex: 1;
   padding: 10px;
-  border: none;
+  border: 1px solid #cbd5e1;
   cursor: pointer;
-  border-radius: 6px;
-  background: #e0e0e0;
-  font-weight: bold;
+  border-radius: 8px;
+  background: var(--light-blue);
+  font-weight: 600;
+  color: var(--dark);
+  transition: all 0.3s;
 }
 
 .tipoCuenta button.active {
-  background: #007bff;
-  color: white;
+  background: var(--blue);
+  color: var(--white);
+  border-color: var(--blue);
 }
 
 form {
@@ -61,38 +75,53 @@ form.active {
 label {
   display: block;
   margin-top: 12px;
-  font-weight: bold;
+  font-weight: 600;
+  color: var(--gray);
 }
 
 input,
 select {
   width: 100%;
-  padding: 8px;
+  padding: 10px;
   margin-top: 5px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 0.95em;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--blue);
 }
 
 .submit-btn {
-  margin-top: 20px;
+  margin-top: 25px;
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   border: none;
-  border-radius: 6px;
-  background: #28a745;
-  color: white;
+  border-radius: 8px;
+  background: var(--blue);
+  color: var(--white);
   font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.submit-btn:hover {
+  background: var(--blue-hover);
+  transform: translateY(-2px);
 }
 
 .error {
-  background-color: #f8d7da; /* fondo rojo claro */
-  color: #721c24; /* texto rojo oscuro */
-  border: 1px solid #f5c6cb; /* borde suave */
-  padding: 12px 15px; /* espacio interno */
-  border-radius: 6px; /* esquinas redondeadas */
-  margin-top: 15px; /* separacion respecto a otros elementos */
+  background-color: var(--error-bg);
+  color: var(--error-text);
+  border: 1px solid #fecaca;
+  padding: 12px 15px;
+  border-radius: 8px;
+  margin-top: 15px;
   font-size: 14px;
-  text-align: center; /* opcional: centrar el texto */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* un toque de sombra */
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }

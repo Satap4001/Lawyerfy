@@ -22,6 +22,33 @@ body {
   overflow-x: hidden;
 }
 
+header {
+  min-height: 100vh;
+  background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)),
+    url('../Images/imgHeaderLogin.jpeg') center/cover no-repeat fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--white);
+  padding: 2rem;
+}
+
+header h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  max-width: 900px;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+header p {
+  margin-bottom: 2.5rem;
+  font-size: 1.25rem;
+  max-width: 650px;
+  color: #cbd5e1;
+  font-weight: 300;
+}
 
 /* --- Botones --- */
 .btns {
