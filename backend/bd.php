@@ -101,7 +101,49 @@
         return $stmt->fetch() ? true : false;
     }
 
+    function modificarDatos($email, $newPass, $newTel, $newLocal){
+        $pdo = connectDatabase();
+        
+        $stmt = $pdo->prepare("SELECT id FROM cliente WHERE email = :email");
+        $stmt->execute([":email" => $email]);
 
+        if ($stmt->rowCount() > 0) {
+            $update = $pdo->prepare(
+                "UPDATE cliente 
+                SET contrasena = :contrasena, telefono = :telefono, localidad = :localidad 
+                WHERE email = :email"
+            );
+            $update->execute([
+                ":contrasena" => $newPass,
+                ":telefono"   => $newTel,
+                ":localidad"  => $newLocal,
+                ":email"      => $email
+            ]);
+
+            return "DATOS ACTUALIZADOS (CLIENTE)";
+        }
+        
+        $stmt = $pdo->prepare("SELECT id FROM abogado WHERE email = :email");
+        $stmt->execute([":email" => $email]);
+
+        if ($stmt->rowCount() > 0) {
+            $update = $pdo->prepare(
+                "UPDATE abogado 
+                SET contrasena = :contrasena, telefono = :telefono, localidad = :localidad 
+                WHERE email = :email"
+            );
+            $update->execute([
+                ":contrasena" => $newPass,
+                ":telefono"   => $newTel,
+                ":localidad"  => $newLocal,
+                ":email"      => $email
+            ]);
+
+            return "DATOS ACTUALIZADOS (ABOGADO)";
+        }
+
+        return "EMAIL NO ENCONTRADO";
+    }
 
 
 ?>
