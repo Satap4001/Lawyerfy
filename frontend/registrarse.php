@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lawyerfy - Registro</title>
+  <title>Lawyerfy | Registro</title>
   <link rel="stylesheet" href="CSS/registrarseStyle.css">
 </head>
 <body>

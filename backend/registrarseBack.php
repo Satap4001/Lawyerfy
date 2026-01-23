@@ -57,7 +57,7 @@ if ($tipo === 'Cliente') {
 session_start();
 
 if ($mensaje != "EL EMAIL YA ESTÁ REGISTRADO") {
-    header("Location: ../frontend/home.php");
+    header("Location: ../frontend/pagePublicaciones.php");
     exit();
 } else {
     $_SESSION['error'] = "El email ya está registrado. Intenta con otro.";

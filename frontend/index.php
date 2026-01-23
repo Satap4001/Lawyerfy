@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bufete Jurídico | Expertos en Defensa Legal</title>
+    <title>Lawyerfy | Expertos en Defensa Legal</title>
     <meta name="description" content="Bufete de abogados especializado en derecho civil, penal y laboral. Defendemos personas con rigor, cercanía y eficacia." />
     <link href="CSS/indexStyle.css" rel="stylesheet">
 </head>
