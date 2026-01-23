@@ -3,217 +3,299 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil de Abogado | Red Legal</title>
+    <title>Perfil Profesional | Lawyerfy</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #1a2a40; /* Azul marino institucional */
-            --secondary-color: #c5a059; /* Dorado/Bronce para acentos */
-            --bg-color: #f4f7f6;
-            --text-dark: #333;
-            --text-light: #666;
-            --white: #ffffff;
+            --primary: #0f172a;
+            --accent: #d4af37; /* Dorado metálico */
+            --success: #059669;
+            --bg: #f8fafc;
+            --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: #1e293b;
+            line-height: 1.6;
             margin: 0;
-            color: var(--text-dark);
+        }
+
+        /* --- NAVBAR DE EJEMPLO --- */
+        nav {
+            background: var(--primary);
+            padding: 1rem 2rem;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 40px auto;
             padding: 0 20px;
             display: grid;
-            grid-template-columns: 2fr 1fr;
+            grid-template-columns: 1fr 350px;
             gap: 30px;
         }
 
-        /* --- CABECERA --- */
-        .profile-header {
+        /* --- HEADER PREMIUM --- */
+        .profile-card {
             grid-column: 1 / -1;
-            background: var(--primary-color);
-            color: var(--white);
-            padding: 40px;
-            border-radius: 12px;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
             display: flex;
-            align-items: center;
-            gap: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .profile-cover {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+            position: absolute;
+            top: 0;
+            z-index: 1;
+        }
+
+        .profile-header-content {
+            position: relative;
+            z-index: 2;
+            padding: 40px;
+            display: flex;
+            align-items: flex-end;
+            width: 100%;
+            margin-top: 50px;
+        }
+
+        .profile-img-container {
+            position: relative;
+            margin-right: 30px;
         }
 
         .profile-img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            border: 5px solid var(--secondary-color);
-            object-fit: cover;
-        }
-
-        .header-info h1 {
-            margin: 0;
-            font-size: 2.2rem;
-        }
-
-        .header-info .specialty {
-            color: var(--secondary-color);
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin: 5px 0;
-        }
-
-        .badge-verified {
-            background: #27ae60;
-            padding: 4px 12px;
+            width: 160px;
+            height: 160px;
             border-radius: 20px;
-            font-size: 0.8rem;
-            display: inline-block;
-            margin-top: 10px;
+            border: 6px solid white;
+            object-fit: cover;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        /* --- COLUMNA PRINCIPAL --- */
-        .main-content section {
-            background: var(--white);
+        .verified-icon {
+            position: absolute;
+            bottom: -10px;
+            right: -10px;
+            background: #3b82f6;
+            color: white;
+            padding: 8px;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+
+        .header-text h1 { margin: 0; font-size: 2rem; color: var(--primary); }
+        .header-text p { margin: 5px 0; color: #64748b; font-weight: 500; }
+
+        /* --- TABS --- */
+        .tabs-container {
+            background: white;
+            border-radius: 15px;
+            margin-top: 20px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .tabs-header {
+            display: flex;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 0 20px;
+        }
+
+        .tab-btn {
+            padding: 20px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-weight: 600;
+            color: #64748b;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab-btn.active {
+            color: var(--primary);
+            border-bottom-color: var(--accent);
+        }
+
+        .tab-content { padding: 30px; display: none; }
+        .tab-content.active { display: block; }
+
+        /* --- RESEÑAS --- */
+        .review {
+            border-bottom: 1px solid #f1f5f9;
+            padding: 15px 0;
+        }
+        .stars { color: #fbbf24; }
+
+        /* --- SIDEBAR --- */
+        .sidebar-card {
+            background: white;
             padding: 30px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        h2 {
-            border-left: 5px solid var(--secondary-color);
-            padding-left: 15px;
-            font-size: 1.4rem;
-            color: var(--primary-color);
-        }
-
-        .tags span {
-            display: inline-block;
-            background: #eee;
-            padding: 8px 15px;
-            border-radius: 5px;
-            margin: 5px;
-            font-size: 0.9rem;
-        }
-
-        /* --- COLUMNA LATERAL (Sticky) --- */
-        .sidebar {
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
             position: sticky;
             top: 20px;
-            height: fit-content;
         }
 
-        .action-card {
-            background: var(--white);
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        .price-tag {
-            font-size: 1.5rem;
+        .availability {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--success);
             font-weight: bold;
             margin-bottom: 20px;
-            display: block;
         }
 
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 12px;
-            border-radius: 8px;
-            border: none;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-            text-decoration: none;
+        .pulse {
+            width: 10px;
+            height: 10px;
+            background: var(--success);
+            border-radius: 50%;
+            box-shadow: 0 0 0 rgba(5, 150, 105, 0.4);
+            animation: pulse-animation 2s infinite;
         }
 
-        .btn-primary {
-            background: var(--secondary-color);
+        @keyframes pulse-animation {
+            0% { box-shadow: 0 0 0 0px rgba(5, 150, 105, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(5, 150, 105, 0); }
+            100% { box-shadow: 0 0 0 0px rgba(5, 150, 105, 0); }
+        }
+
+        .btn-booking {
+            background: var(--primary);
             color: white;
+            text-align: center;
+            padding: 18px;
+            border-radius: 12px;
+            text-decoration: none;
+            display: block;
+            font-weight: bold;
+            transition: transform 0.2s;
         }
 
-        .btn-primary:hover { background: #b08d4a; }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
+        .btn-booking:hover {
+            transform: translateY(-2px);
+            background: #1e293b;
         }
 
-        .stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .stat-item {
-            background: #f9f9f9;
-            padding: 10px;
-            border-radius: 8px;
-        }
-
-        .stat-item i { color: var(--secondary-color); }
-
-        /* Responsive */
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             .container { grid-template-columns: 1fr; }
-            .profile-header { flex-direction: column; text-align: center; }
+            .profile-header-content { flex-direction: column; align-items: center; text-align: center; }
+            .profile-img-container { margin: 0 0 20px 0; }
         }
     </style>
 </head>
 <body>
 
+<nav>
+    <div style="font-size: 1.5rem; font-weight: bold;">Lawyerfy</div>
+    <div><i class="fa-solid fa-circle-user fa-xl"></i></div>
+</nav>
+
 <div class="container">
-    <header class="profile-header">
-        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=250&q=80" alt="Foto de perfil" class="profile-img">
-        <div class="header-info">
-            <h1>Lic. Alejandro Martínez</h1>
-            <p class="specialty">Especialista en Derecho Mercantil y Civil</p>
-            <p><i class="fa-solid fa-location-dot"></i> Madrid, España | Colegiado Nº 45.122</p>
-            <span class="badge-verified"><i class="fa-solid fa-check-circle"></i> Abogado Verificado</span>
-        </div>
-    </header>
-
-    <main class="main-content">
-        <section>
-            <h2>Sobre mí</h2>
-            <p>Con más de 12 años de experiencia, me especializo en asesoramiento integral a empresas y defensa en litigios civiles. Mi enfoque se basa en la transparencia y la resolución eficiente de conflictos, priorizando siempre la mediación antes de la vía judicial.</p>
-        </section>
-
-        <section>
-            <h2>Áreas de Práctica</h2>
-            <div class="tags">
-                <span>Derecho Societario</span>
-                <span>Contratos Mercantiles</span>
-                <span>Propiedad Intelectual</span>
-                <span>Fusiones y Adquisiciones</span>
+    <div class="profile-card">
+        <div class="profile-cover"></div>
+        <div class="profile-header-content">
+            <div class="profile-img-container">
+                <img src="Images/gabriel_abo.jpg" alt="Abogado" class="profile-img">
+                <div class="verified-icon"><i class="fa-solid fa-check"></i></div>
             </div>
-        </section>
+            <div class="header-text">
+                <h1>Abog. Gabriel Blanco Soria</h1>
+                <p>Especialista en Derecho de Familia y Sucesiones</p>
+                <div style="margin-top: 10px;">
+                    <span class="stars"><i class="fa-solid fa-star"></i> 4.9</span>
+                    <span style="color: #94a3b8; margin-left: 10px;">(128 opiniones profesionales)</span>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <section>
-            <h2>Formación y Logros</h2>
-            <ul style="list-style: none; padding: 0;">
-                <li style="margin-bottom: 10px;">
-                    <i class="fa-solid fa-graduation-cap" style="color: var(--secondary-color);"></i> 
-                    <strong>Máster en Derecho de Empresa</strong> - Universidad Complutense
-                </li>
-                <li>
-                    <i class="fa-solid fa-award" style="color: var(--secondary-color);"></i> 
-                    Premio a la Excelencia Jurídica 2023
-                </li>
-            </ul>
-        </section>
-    </main>
+    <div class="main-column">
+        <div class="tabs-container">
+            <div class="tabs-header">
+                <button class="tab-btn active" onclick="openTab(event, 'bio')">Biografía</button>
+                <button class="tab-btn" onclick="openTab(event, 'reviews')">Opiniones</button>
+                <button class="tab-btn" onclick="openTab(event, 'exp')">Experiencia</button>
+            </div>
 
-    <aside class="sidebar">
-        <div class="action-card">
-            <span class="price-tag">80€ <small style="font-size: 0.8rem; font-weight: normal;">/ Consulta inicial</small></span>
+            <div id="bio" class="tab-content active">
+                <h3>Sobre el profesional</h3>
+                <p>Abogado con más de 15 años de trayectoria en el sector legal. Ex-magistrado adjunto y socio fundador de "De la Vega & Asociados". Mi compromiso es ofrecer una defensa técnica impecable combinada con un trato cercano y humano.</p>
+                <h4>Idiomas</h4>
+                <p><i class="fa-solid fa-globe"></i> Español, Inglés, Francés</p>
+            </div>
+
+            <div id="reviews" class="tab-content">
+                <h3>Lo que dicen los clientes</h3>
+                <div class="review">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p><strong>"Excelente profesional"</strong> - Logró resolver mi divorcio en tiempo récord. Muy recomendable.</p>
+                    <small>Publicado hace 2 semanas</small>
+                </div>
+                <div class="review">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p><strong>"Transparencia total"</strong> - Desde el primer día me explicó los costes y posibilidades reales.</p>
+                    <small>Publicado hace 1 mes</small>
+                </div>
+            </div>
+
+            <div id="exp" class="tab-content">
+                <h3>Trayectoria</h3>
+                <ul>
+                    <li>Socio Senior en De la Vega Abogados (2015 - Presente)</li>
+                    <li>Asesor Jurídico en Banco Central (2010 - 2015)</li>
+                    <li>Grado en Derecho - Universidad de Madrid</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <aside>
+        <div class="sidebar-card">
+            <div class="availability">
+                <div class="pulse"></div> Disponible para consultas
+            </div>
+            <div style="font-size: 0.9rem; color: #64748b; margin-bottom: 5px;">Precio por consulta desde:</div>
+            <div style="font-size: 2rem; font-weight: 800; margin-bottom: 20px;">95€ <span style="font-size: 1rem; color: #94a3b8;">/sesión</span></div>
             
-            <a href="#" class="btn btn-primary">RE
+            <a href="#" class="btn-booking">RESERVAR CITA</a>
+            
+            <div style="margin-top: 25px; border-top: 1px solid #f1f5f9; padding-top: 20px;">
+                <p style="font-size: 0.9rem;"><i class="fa-solid fa-shield-halved"></i> <strong>Cita Garantizada:</strong> Reembolso si el abogado no asiste.</p>
+                <p style="font-size: 0.9rem;"><i class="fa-solid fa-video"></i> Videollamada o Presencial</p>
+            </div>
+        </div>
+    </aside>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+            tabcontent[i].classList.remove("active");
+        }
+        tablinks = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+</body>
+</html>
