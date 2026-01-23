@@ -18,6 +18,7 @@
             </div>
 
             <nav class="nav-links">
+                <a href="#">Perfil</a>
                 <a href="#">Contactos</a>
                 <a href="#" class="logout">Cerrar sesión</a>
             </nav>
@@ -30,8 +31,8 @@
         <section class="feed">
             <!-- NEW POST -->
             <div class="new-post">
-                <form action="" method="POST">
-                    <textarea name="contenido" rows="3" placeholder="Publica un anuncio o servicio legal..." required></textarea>
+                <form action="../backend/procesarPubli.php" method="POST" enctype="multipart/form-data">
+                    <textarea name = "contenido" rows="3" placeholder="Publica un anuncio o servicio legal..." required></textarea>
 
                     <div class="post-actions">
                         <label for="file-upload" class="upload-icon" title="Adjuntar archivo">🖼️</label>
@@ -45,7 +46,6 @@
             <!-- POST -->
             <article class="post">
                 <div class="post-header">
-                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2" alt="">
                     <div>
                         <h4>Estudio Jurídico Gómez & Asociados</h4>
                         <span>Derecho Laboral · Buenos Aires</span>
@@ -65,7 +65,6 @@
             <!-- POST -->
             <article class="post">
                 <div class="post-header">
-                    <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12" alt="">
                     <div>
                         <h4>Dr. Martín López</h4>
                         <span>Derecho Penal · Madrid</span>

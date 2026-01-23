@@ -16,7 +16,13 @@
             <div class="login-box">
                 <h1>INICIO DE SESION</h1>
 
-                <form id="loginForm">
+                <!--Mensaje de error si el Log in es falso-->
+                <?php if (isset($_GET['error'])): ?>
+                    <p style="color:red; text-align:center; margin-bottom:10px;">
+                        Usuario o contraseña incorrectos
+                    </p>
+                <?php endif; ?>
+                <form action = "../backend/comprobarLogin.php" method = "post" id="loginForm">
                     <label for="usuario">USUARIO</label>
                     <input type="text" id="usuario" name="usuario" required>
 
@@ -28,41 +34,10 @@
 
                 <div class="links-container">
                     <a href="#" class="forgot-password">¿Has olvidado la contraseña?</a>
-                    <a href="#" class="register-link">¿No has iniciado sesión? Registrarse</a>
+                    <a href="registrarse.php" class="register-link">¿No has iniciado sesión? Registrarse</a>
                 </div>
             </div>
         </div>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const loginForm = document.getElementById('loginForm');
-            
-            loginForm.addEventListener('submit', function(event) {
-                event.preventDefault();
-
-                const usuarioInput = document.getElementById('usuario').value;
-                const contrasenaInput = document.getElementById('contrasena').value;
-                
-                const USUARIO_CORRECTO = 'dawuser';
-                const CONTRASENA_CORRECTA = '123456';
-                
-                if (usuarioInput === USUARIO_CORRECTO && contrasenaInput === CONTRASENA_CORRECTA) {
-                    alert('Inicio de sesión exitoso. Bienvenido/a.');
-                    loginForm.reset(); 
-                } else {
-                    alert('Error de inicio de sesión: Usuario o contraseña incorrectos.');
-                }
-            });
-
-            const backButton = document.querySelector('.back-button');
-            backButton.addEventListener('click', (e) => {
-                e.preventDefault();
-                if (confirm('¿Estás seguro que deseas salir?')) {
-                    alert('Simulación de salida.');
-                }
-            });
-        });
-    </script>
 </body>
 </html>
