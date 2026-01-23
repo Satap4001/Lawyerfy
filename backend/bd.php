@@ -145,5 +145,12 @@
         return "EMAIL NO ENCONTRADO";
     }
 
+    function buscarPublicacion($keyword){
+        $pdo = connectDatabase();
+        $stmt = $pdo->prepare("SELECT * FROM publicacion WHERE titulo LIKE :keyword OR descripcion LIKE :keyword");
+        $stmt->execute(["keyword" => $keyword]);
+        $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $resultado;
+    }
 
 ?>
