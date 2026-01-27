@@ -154,13 +154,13 @@
         FROM publicacion p
         LEFT JOIN abogado a ON p.id_abogado = a.id
         LEFT JOIN especialidad e ON a.id_especialidad = e.id
-        WHERE p.titulo LIKE '%término%' 
-        OR p.descripcion LIKE '%término%'
-        OR a.nombre LIKE '%término%'
-        OR a.apellido LIKE '%término%'
-        OR CONCAT(a.nombre, ' ', a.apellido) LIKE '%término%'
-        OR e.nombre LIKE '%término%';");
-        $stmt->execute(["keyword" => $keyword]);
+        WHERE p.titulo LIKE ':keyword' 
+        OR p.descripcion LIKE ':keyword'
+        OR a.nombre LIKE ':keyword'
+        OR a.apellido LIKE ':keyword'
+        OR CONCAT(a.nombre, ' ', a.apellido) LIKE ':keyword'
+        OR e.nombre LIKE ':keyword';");
+        $stmt->execute([":keyword" => $keyword]);
         $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $resultado;
     }
