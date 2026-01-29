@@ -1,7 +1,10 @@
 <?php
+require_once('bd.php');
+
 if (isset($_POST['publicar'])) {
 
     $contenido = trim($_POST['contenido']);
+    $titulo = trim($_POST['titulo']);
 
     // Carpeta donde se guardarán las imágenes
     $carpeta = "../uploads/";
@@ -28,9 +31,9 @@ if (isset($_POST['publicar'])) {
         }
     }
 
-    // Aquí puedes guardar en base de datos
-    // Ejemplo:
-    // INSERT INTO publicaciones(contenido, imagen) VALUES (?, ?)
+    $id_abogado = $_SESSION['id_abogado'];
+
+    agregarPublicacion($titulo, $contenido, $imagenNombre, $id_abogado);
 
     echo "Publicación guardada correctamente: " .$contenido;
 }

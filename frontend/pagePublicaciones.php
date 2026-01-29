@@ -18,7 +18,7 @@
             </div>
 
             <nav class="nav-links">
-                <a href="#">Perfil</a>
+                <button onclick = "irPerfil()">Perfil</button>
                 <a href="#">Contactos</a>
                 <a href="#" class="logout">Cerrar sesión</a>
             </nav>
@@ -32,10 +32,11 @@
             <!-- NEW POST -->
             <div class="new-post">
                 <form action="../backend/procesarPubli.php" method="POST" enctype="multipart/form-data">
-                    <textarea name = "contenido" rows="3" placeholder="Publica un anuncio o servicio legal..." required></textarea>
+                    <input type="text" name="titulo" placeholder="Título" class="titulo" maxlength = "80" required>
+                    <textarea name = "contenido" rows="3" placeholder="Publica un anuncio o servicio legal..." maxlength = "1000" required></textarea>
 
                     <div class="post-actions">
-                        <label for="file-upload" class="upload-icon" title="Adjuntar archivo">🖼️</label>
+                        <label for="file-upload" class="upload-icon" title="Adjuntar archivo"></label>
                         <input type="file" id="file-upload" name="imagen">
                     </div>
 
@@ -82,7 +83,11 @@
 
         </section>
     </main>
-
+    <script>
+        function irPerfil() {
+            window.location.href = "abogadoProfile.php"; //AQUI HAY QUE PONER UN IF QUE COMPRUEBE SI ERES ABOGADO O CLIENTE
+        }
+    </script>
 </body>
 
 </html>
