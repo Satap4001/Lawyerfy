@@ -147,8 +147,20 @@
 
     function buscarPublicacion($keyword){
         $pdo = connectDatabase();
-        $stmt = $pdo->prepare("SELECT * FROM publicacion WHERE titulo LIKE :keyword OR descripcion LIKE :keyword");
-        $stmt->execute(["keyword" => $keyword]);
+        $stmt = 
+        $pdo->prepare("SELECT DISTINCT p.*, 
+       CONCAT(a.nombre, ' ', a.apellido) as abogado_nombre,
+       e.nombre as especialidad
+        FROM publicacion p
+        LEFT JOIN abogado a ON p.id_abogado = a.id
+        LEFT JOIN especialidad e ON a.id_especialidad = e.id
+        WHERE p.titulo LIKE ':keyword' 
+        OR p.descripcion LIKE ':keyword'
+        OR a.nombre LIKE ':keyword'
+        OR a.apellido LIKE ':keyword'
+        OR CONCAT(a.nombre, ' ', a.apellido) LIKE ':keyword'
+        OR e.nombre LIKE ':keyword';");
+        $stmt->execute([":keyword" => $keyword]);
         $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $resultado;
     }
