@@ -1,5 +1,7 @@
 <?php 
 
+    session_start();
+
     function connectDatabase (){
 
         $dbname = "lawyerfy_bd";
@@ -76,6 +78,9 @@
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
         
         if($usuario){
+            $_SESSION["nombre"] = $usuario['nombre'];
+            $_SESSION["apellido"] = $usuario['apellido'];
+            $_SESSION["id_abogado"] = $usuario['id'];
             return $usuario;
         }
         
@@ -84,6 +89,9 @@
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
         
         if($usuario){
+            $_SESSION["nombre"] = $usuario['nombre'];
+            $_SESSION["apellido"] = $usuario['apellido'];
+            $_SESSION["id_abogado"] = $usuario['id'];
             return $usuario;
         }
         
