@@ -31,7 +31,7 @@ if (isset($_POST['publicar'])) {
         }
     }
 
-    $id_abogado; //COGER EL ID
+    $id_abogado = $_SESSION['id_abogado'];
 
     agregarPublicacion($titulo, $contenido, $imagenNombre, $id_abogado);
 
