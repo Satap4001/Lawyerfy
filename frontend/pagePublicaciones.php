@@ -18,7 +18,7 @@
             </div>
 
             <nav class="nav-links">
-                <a href="#">Perfil</a>
+                <button onclick = "irPerfil()">Perfil</button>
                 <a href="#">Contactos</a>
                 <a href="#" class="logout">Cerrar sesión</a>
             </nav>
@@ -83,7 +83,11 @@
 
         </section>
     </main>
-
+    <script>
+        function irPerfil() {
+            window.location.href = "abogadoProfile.php"; //AQUI HAY QUE PONER UN IF QUE COMPRUEBE SI ERES ABOGADO O CLIENTE
+        }
+    </script>
 </body>
 
 </html>
