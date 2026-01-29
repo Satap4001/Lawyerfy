@@ -145,6 +145,34 @@
         return "EMAIL NO ENCONTRADO";
     }
 
+    function agregarPublicacion($titulo, $contenido, $imagenNombre, $id_abogado) {
+        $pdo = connectDatabase();
+
+        try {
+            // Preparar la consulta
+            $fecha = time();
+            $sql = "INSERT INTO publicaciones (fecha, titulo, descripcion, codigoImagen, id_admin, id_abogado) 
+                    VALUES (:fecha, :titulo, :descripcion, :codigoImagen, :id_admin, :id_abogado)";
+
+            $stmt = $pdo->prepare($sql);
+
+            // Ejecutar con parámetros
+            $stmt->execute([
+                ':fecha' => $fecha,
+                ':titulo' => $titulo,
+                ':descripcion' => $contenido,
+                ':codigoImagen' => $imagenNombre,
+                ':id_admin' => 1,
+                ':id_abogado' => $id_abogado
+            ]);
+
+            echo "Publicación guardada correctamente";
+
+        } catch (PDOException $e) {
+            echo "Error al guardar publicación: " . $e->getMessage();
+        }
+    }
+
     function buscarPublicacion($keyword){
         $pdo = connectDatabase();
         $stmt = 

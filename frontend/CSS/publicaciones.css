@@ -114,6 +114,16 @@ header {
     resize: none;
 }
 
+.titulo {
+    width: 100%;
+    height: 30px;
+    border: 1px solid #cbd5f5;
+    border-radius: var(--radius);
+    padding: 0.8rem;
+    resize: none;
+    
+}
+
 .new-post button {
     margin-top: 0.8rem;
     background: var(--accent);
