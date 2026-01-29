@@ -9,6 +9,10 @@
 </head>
 
 <body>
+    <?php
+        require_once('../backend/bd.php');
+        $publicaciones = getAllPublicaciones();
+    ?>
     <!-- HEADER -->
     <header>
         <div class="nav">
@@ -43,6 +47,29 @@
                     <button type="submit" name="publicar">Publicar</button>
                 </form>
             </div>
+
+            <?php 
+                foreach ($publicaciones as $publi) {
+                    echo "
+                    <article class='post'>
+                        <div class='post-header'>
+                            <div>
+                                <h4>" . htmlspecialchars($publi['abogado_nombre']) . "</h4>
+                                <span>" . htmlspecialchars($publi['especialidad']) . "</span>
+                            </div>
+                        </div>
+                        <h5>" . htmlspecialchars($publi['titulo']) . "</h5>
+                        <p>" . nl2br(htmlspecialchars($publi['descripcion'])) . "</p>";
+
+                        // Mostrar imagen si existe
+                        if (!empty($publi['codigoImagen'])) {
+                            echo "<img src='../uploads/" . htmlspecialchars($publi['codigoImagen']) . "' alt='Imagen publicación'>";
+                        }
+
+                    echo "</article>";
+                }
+                ?>
+            
 
             <!-- POST -->
             <article class="post">

@@ -199,4 +199,17 @@
         return $resultado;
     }
 
+    function getAllPublicaciones(){
+        $pdo = connectDatabase();
+        $stmt = $pdo->prepare("SELECT DISTINCT p.*, 
+       CONCAT(a.nombre, ' ', a.apellido) as abogado_nombre,
+       e.nombre as especialidad
+        FROM publicacion p
+        LEFT JOIN abogado a ON p.id_abogado = a.id
+        LEFT JOIN especialidad e ON a.id_especialidad = e.id;");
+        $stmt->execute();
+        $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $resultado;
+    }
+
 ?>
