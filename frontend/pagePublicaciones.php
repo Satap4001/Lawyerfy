@@ -7,7 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="CSS/publicaciones.css" rel="stylesheet">
 </head>
-
+<?php 
+    session_start();
+?>
 <body>
     <!-- HEADER -->
     <header>

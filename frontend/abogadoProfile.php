@@ -6,6 +6,9 @@
     <title>Perfil Profesional | Lawyerfy</title>
     <link href="CSS/aboProfilecss.css" rel="stylesheet">
 </head>
+<?php 
+    session_start();
+?>
 <body>
 
 <nav>
