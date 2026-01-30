@@ -158,14 +158,13 @@
 
         try {
             // Preparar la consulta
-            $sql = "INSERT INTO publicacion (fecha, titulo, descripcion, codigoImagen, id_admin, id_abogado) 
-                    VALUES (:fecha, :titulo, :descripcion, :codigoImagen, :id_admin, :id_abogado)";
+            $sql = "INSERT INTO publicacion (titulo, descripcion, codigoImagen, id_admin, id_abogado) 
+                    VALUES (:titulo, :descripcion, :codigoImagen, :id_admin, :id_abogado)";
 
             $stmt = $pdo->prepare($sql);
 
             // Ejecutar con parámetros
             $stmt->execute([
-                ':fecha' => time(),
                 ':titulo' => $titulo,
                 ':descripcion' => $contenido,
                 ':codigoImagen' => $imagenNombre,
