@@ -1,7 +1,5 @@
 <?php 
 
-    session_start();
-
     function connectDatabase (){
 
         $dbname = "lawyerfy_bd";
