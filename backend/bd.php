@@ -212,4 +212,22 @@
         return $resultado;
     }
 
+
+    function getDatosAbo($id) {
+        $pdo = connectDatabase();
+        $stmt = $pdo->prepare("SELECT 
+                        a.nombre as nombre,
+                        a.apellido as apellido,
+                        a.nacionalidad as nacionalidad,
+                        a.telefono as telefono,
+                        a.genero as genero,
+                        a.localidad as localidad,
+                        e.nombre AS especialidad
+                    FROM abogado a
+                    JOIN especialidad e ON a.id_especialidad = e.id
+                    WHERE a.id = :id");
+        $stmt->execute(["id" => $id]);
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $resultado;
+    }
 ?>

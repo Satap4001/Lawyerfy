@@ -10,7 +10,15 @@
     session_start();
 ?>
 <body>
+<?php 
+    include_once('../backend/bd.php');
 
+    $abogado = getDatosAbo($_SESSION['id_abogado']);
+
+    if (!$abogado) {
+        die("Abogado no encontrado");
+    }
+?>
 <nav>
     <div style="font-size: 1.5rem; font-weight: bold;">Lawyerfy</div>
     <div><i class="fa-solid fa-circle-user fa-xl"></i></div>
@@ -25,8 +33,8 @@
                 <div class="verified-icon"><i class="fa-solid fa-check"></i></div>
             </div>
             <div class="header-text">
-                <h1>Abog. Gabriel Blanco Soria</h1>
-                <p>Especialista en Derecho de Familia y Sucesiones</p>
+                <h1>Abog. <?= $abogado['nombre']." ". $abogado['apellido']?></h1>
+                <p>Especialista en <?= $abogado['especialidad']?></p>
                 <div style="margin-top: 10px;">
                     <span class="stars"><i class="fa-solid fa-star"></i> 4.9</span>
                     <span style="color: #94a3b8; margin-left: 10px;">(128 opiniones profesionales)</span>
@@ -46,8 +54,8 @@
             <div id="bio" class="tab-content active">
                 <h3>Sobre el profesional</h3>
                 <p>Abogado con más de 15 años de trayectoria en el sector legal. Ex-magistrado adjunto y socio fundador de "De la Vega & Asociados". Mi compromiso es ofrecer una defensa técnica impecable combinada con un trato cercano y humano.</p>
-                <h4>Idiomas</h4>
-                <p><i class="fa-solid fa-globe"></i> Español, Inglés, Francés</p>
+                <h4>Nacionalidad</h4>
+                <p><i class="fa-solid fa-globe"></i><?= $abogado['nacionalidad'] ?></p>
             </div>
 
             <div id="reviews" class="tab-content">
@@ -88,6 +96,7 @@
             <div style="margin-top: 25px; border-top: 1px solid #f1f5f9; padding-top: 20px;">
                 <p style="font-size: 0.9rem;"><i class="fa-solid fa-shield-halved"></i> <strong>Cita Garantizada:</strong> Reembolso si el abogado no asiste.</p>
                 <p style="font-size: 0.9rem;"><i class="fa-solid fa-video"></i> Videollamada o Presencial</p>
+                <p style="font-size: 0.9rem;"><i class="fa-solid fa-video"></i><b>Teléfono: </b><?= $abogado['telefono'] != "" ? $abogado['telefono'] : "No disponible"?></p>
             </div>
         </div>
     </aside>
@@ -109,6 +118,5 @@
         evt.currentTarget.className += " active";
     }
 </script>
-
 </body>
 </html>
