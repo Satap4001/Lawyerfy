@@ -212,6 +212,13 @@
         return $resultado;
     }
 
+    function logout() {
+        session_start();
+        session_unset();
+        session_destroy();
+        header("Location: ../frontend/index.php");
+    }
+
 
     function getDatosAbo($id) {
         $pdo = connectDatabase();
