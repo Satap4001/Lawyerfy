@@ -49,6 +49,7 @@
                 <button class="tab-btn active" onclick="openTab(event, 'bio')">Biografía</button>
                 <button class="tab-btn" onclick="openTab(event, 'reviews')">Opiniones</button>
                 <button class="tab-btn" onclick="openTab(event, 'exp')">Experiencia</button>
+                <button class="tab-btn" onclick="openTab(event, 'publicaciones')">Publicaciones</button>
             </div>
 
             <div id="bio" class="tab-content active">
@@ -79,6 +80,31 @@
                     <li>Asesor Jurídico en Banco Central (2010 - 2015)</li>
                     <li>Grado en Derecho - Universidad de Madrid</li>
                 </ul>
+            </div>
+
+            <div id="publicaciones" class="tab-content">
+                <h3>Publicaciones</h3>
+                <?php 
+                    $publicaciones = getPublicacionesByAbogado($_SESSION['id_abogado']);
+                    foreach ($publicaciones as $publi) {
+                        echo "
+                        <article class='post'>
+                            <div class='post-header'>
+                                <div>
+                                    <h4>" . htmlspecialchars($publi['titulo']) . "</h4>
+                                </div>
+                            </div>
+                            
+                            <p>" . nl2br(htmlspecialchars($publi['descripcion'])) . "</p>";
+
+                            // Mostrar imagen si existe
+                            if (!empty($publi['codigoImagen'])) {
+                                echo "<img src='../uploads/" . htmlspecialchars($publi['codigoImagen']) . "' alt='Imagen publicación'>";
+                            }
+
+                        echo "</article>";
+                    }
+                ?>
             </div>
         </div>
     </div>
