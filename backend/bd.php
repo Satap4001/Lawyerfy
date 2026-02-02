@@ -89,7 +89,7 @@
         if($usuario){
             $_SESSION["nombre"] = $usuario['nombre'];
             $_SESSION["apellido"] = $usuario['apellido'];
-            $_SESSION["id_cliente"] = $usuario['id'];
+            $_SESSION["id_abogado"] = $usuario['id'];
             return $usuario;
         }
         
