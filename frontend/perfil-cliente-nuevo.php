@@ -20,7 +20,7 @@
             <div class="profile-cover"></div>
             <div class="profile-header-content">
                 <div class="profile-img-container">
-                    <img src="" alt="Foto de Perfil" class="profile-img">
+                    <img src="Images/clienteperfil.webp" alt="Foto de Perfil" class="profile-img">
                 </div>
                 <div class="header-text">
                     <h1>Juan Pérez</h1>
@@ -43,7 +43,7 @@
 
             <div class="post">
                 <div class="post-header">
-                    <img src="" alt="Avatar">
+                    <img src="Images/clienteperfil.webp" alt="Avatar">
                     <div>
                         <h4>Juan Pérez</h4>
                         <span>Publicado hace 2 horas</span>
