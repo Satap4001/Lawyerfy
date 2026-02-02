@@ -12,7 +12,7 @@
         return $pdo;
     }
 
-    function getAllEspecialidades (){
+    function getAllEspecialidades () {
         $pdo = connectDatabase();
         $stmt = $pdo->prepare("SELECT * FROM especialidad");
         $stmt->execute();

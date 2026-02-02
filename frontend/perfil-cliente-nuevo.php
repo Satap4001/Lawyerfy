@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Perfil | Cliente</title>
-    <link rel="stylesheet" href="publicaciones.css">
-    <link rel="stylesheet" href="aboProfilecss.css">
-    <link rel="stylesheet" href="cliente-estilos.css"> </head>
+    <link rel="stylesheet" href="CSS/publicacionesCliente.css">
+    <link rel="stylesheet" href="CSS/clienteProfileStyle.css">
+    <link rel="stylesheet" href="CSS/cliente-estilos.css"> 
+</head>
 <body>
     
 <?php 

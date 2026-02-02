@@ -12,7 +12,7 @@
 ?>
 <body>
     <?php
-    include 'header.php'; 
+        include 'header.php'; 
         require_once('../backend/bd.php');
         $publicaciones = getAllPublicaciones();
     ?>
