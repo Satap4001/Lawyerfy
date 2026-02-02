@@ -1,102 +1,154 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <style>
-        :root {
-            --primary: #1a2b48; 
-            --accent: #c5a059;  
-            --text: #333;
-            --bg: #ffffff;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lawyerfy</title>
 
-        body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        .lawyerfy-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1rem 5%;
-            background: var(--bg);
-            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+<style>
+:root {
+    --primary: #1a2b48;
+    --accent: #c5a059;
+    --text: #0f172a;
+    --muted: #64748b;
+    --border: #e5e7eb;
+    --bg-soft: #f8fafc;
+}
 
-        .brand {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
-            letter-spacing: -1px;
-        }
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #ffffff;
+}
 
-        .search-container {
-            flex-grow: 0.4;
-            position: relative;
-        }
-        .search-container input {
-            width: 100%;
-            padding: 10px 15px 10px 40px;
-            border: 1px solid #e0e0e0;
-            border-radius: 25px;
-            background: #f8f9fa;
-            transition: all 0.3s;
-        }
-        .search-container input:focus {
-            outline: none;
-            border-color: var(--accent);
-            background: #fff;
-            box-shadow: 0 0 8px rgba(197, 160, 89, 0.2);
-        }
+/* HEADER */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    padding: 0 4%;
+    border-bottom: 1px solid var(--border);
+    background: #fff;
+}
 
-        .user-actions {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
+/* LOGO */
+.logo {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--primary);
+    text-decoration: none;
+    letter-spacing: -0.3px;
+}
 
-        .profile-link {
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+/* SEARCH */
+.search {
+    width: 320px;
+    position: relative;
+}
 
-        .profile-link:hover { color: var(--accent); }
+.search input {
+    width: 100%;
+    padding: 8px 12px 8px 36px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    background: #fff;
+}
 
-        .btn-logout {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 8px 18px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: opacity 0.3s;
-        }
+.search i {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    font-size: 0.85rem;
+    color: var(--muted);
+}
 
-        .btn-logout:hover { opacity: 0.9; }
+.search input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
 
-    </style>
+/* USER NAV */
+.user-area {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* PROFILE */
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.avatar {
+    width: 34px;
+    height: 34px;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* LOGOUT */
+.logout {
+    background: none;
+    border: none;
+    font-size: 0.85rem;
+    color: var(--muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.logout:hover {
+    color: #b91c1c;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .search { display: none; }
+    .profile span { display: none; }
+}
+</style>
 </head>
+
 <body>
 
-<header class="lawyerfy-header">
-    <a href="#" class="brand">Lawyerfy</a>
+<header class="header">
+    <a href="#" class="logo">Lawyerfy</a>
 
-    <div class="search-container">
-        <input type="text" placeholder="Buscar expedientes o normativas...">
+    <div class="search">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Buscar">
     </div>
 
-    <nav class="user-actions">
-        <a href="#perfil" class="profile-link">
-            <span>Mi Perfil</span>
+    <div class="user-area">
+        <a href="#" class="profile">
+            <div class="avatar">AU</div>
+            <span>Mi perfil</span>
         </a>
-        <button class="btn-logout">Cerrar Sesión</button>
-    </nav>
+
+        <button class="logout">
+            <i class="fas fa-sign-out-alt"></i>
+            Salir
+        </button>
+    </div>
 </header>
 
 </body>
