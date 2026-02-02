@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     include_once('bd.php');
 
     $usuario = $_POST["usuario"];

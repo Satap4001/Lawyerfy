@@ -71,6 +71,9 @@
     function checkLogIn($email, $userPass){
         $pdo = connectDatabase();
         
+
+        session_unset();
+
         $stmt = $pdo->prepare("SELECT * FROM abogado WHERE email = :email AND contrasena = :contrasena");
         $stmt->execute(["email" => $email , "contrasena" => $userPass]);
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
