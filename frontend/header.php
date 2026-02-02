@@ -144,10 +144,12 @@ body {
             <span>Mi perfil</span>
         </a>
 
-        <button class="logout">
-            <i class="fas fa-sign-out-alt"></i>
-            Salir
-        </button>
+        <form action="../backend/logout.php" method="post">
+            <button type="submit" name="logout" class="logout">
+                <i class="fas fa-sign-out-alt"></i>
+                Salir
+            </button>
+        </form>
     </div>
 </header>
 
