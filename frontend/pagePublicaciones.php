@@ -16,20 +16,9 @@
         $publicaciones = getAllPublicaciones();
     ?>
     <!-- HEADER -->
-    <header>
-        <div class="nav">
-            <div class="nav-left">
-                <div class="logo">Lawyerfy</div>
-                <input type="text" placeholder="Buscar abogados, servicios...">
-            </div>
-
-            <nav class="nav-links">
-                <button onclick = "irPerfil()">Perfil</button>
-                <a href="#">Contactos</a>
-                <a href="#" class="logout">Cerrar sesión</a>
-            </nav>
-        </div>
-    </header>
+   <?php 
+    include 'header.php'; 
+?>
 
     <!-- MAIN CONTENT -->
     <main class="container">

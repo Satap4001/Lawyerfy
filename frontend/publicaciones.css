@@ -1,0 +1,155 @@
+:root {
+    --primary: #1e293b;
+    --secondary: #334155;
+    --accent: #2563eb;
+    --bg: #f1f5f9;
+    --white: #ffffff;
+    --muted: #64748b;
+    --radius: 12px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+    background: var(--bg);
+    color: var(--primary);
+}
+
+
+/* ===== LAYOUT CENTRALIZADO ===== */
+.container {
+    display: flex;              
+    justify-content: center;    /* Centra horizontalmente */
+    gap: 1.5rem;
+    margin: 2rem auto;
+    max-width: 1100px;
+}
+
+/* ===== FEED ===== */
+.feed {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 800px;
+}
+
+.new-post {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 1rem;
+}
+
+.new-post textarea {
+    width: 100%;
+    border: 1px solid #cbd5f5;
+    border-radius: var(--radius);
+    padding: 0.8rem;
+    resize: none;
+}
+
+.titulo {
+    width: 100%;
+    height: 30px;
+    border: 1px solid #cbd5f5;
+    border-radius: var(--radius);
+    padding: 0.8rem;
+    resize: none;
+    
+}
+
+.new-post button {
+    margin-top: 0.8rem;
+    background: var(--accent);
+    color: var(--white);
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.post-actions {
+    margin: 0.6rem 0;
+}
+
+.upload-icon {
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: var(--secondary);
+    display: inline-block;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.upload-icon:hover {
+    color: var(--accent);
+    transform: scale(1.1);
+}
+
+.post {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+}
+
+.post-header {
+    display: flex;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.post-header img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+.post-header h4 {
+    font-size: 1rem;
+}
+
+.post-header span {
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+
+.post p {
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background: #e0e7ff;
+    color: #1e40af;
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 999px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column; /* apilar feed y sidebars ocultos */
+        gap: 1rem;
+    }
+
+    .sidebar,
+    .right-panel {
+        display: none;
+    }
+
+    .nav input {
+        width: 180px;
+    }
+}
