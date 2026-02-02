@@ -76,6 +76,9 @@
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
         
         if($usuario){
+            $_SESSION["nombre"] = $usuario['nombre'];
+            $_SESSION["apellido"] = $usuario['apellido'];
+            $_SESSION["id_abogado"] = $usuario['id'];
             return $usuario;
         }
         
@@ -84,6 +87,9 @@
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
         
         if($usuario){
+            $_SESSION["nombre"] = $usuario['nombre'];
+            $_SESSION["apellido"] = $usuario['apellido'];
+            $_SESSION["id_cliente"] = $usuario['id'];
             return $usuario;
         }
         
@@ -145,5 +151,102 @@
         return "EMAIL NO ENCONTRADO";
     }
 
+    function agregarPublicacion($titulo, $contenido, $imagenNombre, $id_abogado) {
+        $pdo = connectDatabase();
 
+        try {
+            // Preparar la consulta
+            $sql = "INSERT INTO publicacion (titulo, descripcion, codigoImagen, id_admin, id_abogado) 
+                    VALUES (:titulo, :descripcion, :codigoImagen, :id_admin, :id_abogado)";
+
+            $stmt = $pdo->prepare($sql);
+
+            // Ejecutar con parámetros
+            $stmt->execute([
+                ':titulo' => $titulo,
+                ':descripcion' => $contenido,
+                ':codigoImagen' => $imagenNombre,
+                ':id_admin' => 1,
+                ':id_abogado' => $id_abogado
+            ]);
+
+            echo "Publicación guardada correctamente";
+
+        } catch (PDOException $e) {
+            echo "Error al guardar publicación: " . $e->getMessage();
+        }
+    }
+
+    function buscarPublicacion($keyword){
+        $pdo = connectDatabase();
+        $stmt = 
+        $pdo->prepare("SELECT DISTINCT p.*, 
+       CONCAT(a.nombre, ' ', a.apellido) as abogado_nombre,
+       e.nombre as especialidad
+        FROM publicacion p
+        LEFT JOIN abogado a ON p.id_abogado = a.id
+        LEFT JOIN especialidad e ON a.id_especialidad = e.id
+        WHERE p.titulo LIKE ':keyword' 
+        OR p.descripcion LIKE ':keyword'
+        OR a.nombre LIKE ':keyword'
+        OR a.apellido LIKE ':keyword'
+        OR CONCAT(a.nombre, ' ', a.apellido) LIKE ':keyword'
+        OR e.nombre LIKE ':keyword';");
+        $stmt->execute([":keyword" => $keyword]);
+        $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $resultado;
+    }
+
+    function getAllPublicaciones(){
+        $pdo = connectDatabase();
+        $stmt = $pdo->prepare("SELECT DISTINCT p.*, 
+       CONCAT(a.nombre, ' ', a.apellido) as abogado_nombre,
+       e.nombre as especialidad
+        FROM publicacion p
+        LEFT JOIN abogado a ON p.id_abogado = a.id
+        LEFT JOIN especialidad e ON a.id_especialidad = e.id;");
+        $stmt->execute();
+        $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $resultado;
+    }
+
+    function logout() {
+        session_start();
+        session_unset();
+        session_destroy();
+        header("Location: ../frontend/index.php");
+    }
+
+
+    function getDatosAbo($id) {
+        $pdo = connectDatabase();
+        $stmt = $pdo->prepare("SELECT 
+                        a.nombre as nombre,
+                        a.apellido as apellido,
+                        a.nacionalidad as nacionalidad,
+                        a.telefono as telefono,
+                        a.genero as genero,
+                        a.localidad as localidad,
+                        e.nombre AS especialidad
+                    FROM abogado a
+                    JOIN especialidad e ON a.id_especialidad = e.id
+                    WHERE a.id = :id");
+        $stmt->execute(["id" => $id]);
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $resultado;
+    }
+
+    function getPublicacionesByAbogado($id_abogado){
+        $pdo = connectDatabase();
+        $stmt = $pdo->prepare("SELECT DISTINCT p.*, 
+       CONCAT(a.nombre, ' ', a.apellido) as abogado_nombre,
+       e.nombre as especialidad
+        FROM publicacion p
+        LEFT JOIN abogado a ON p.id_abogado = a.id
+        LEFT JOIN especialidad e ON a.id_especialidad = e.id
+        WHERE a.id = :id_abogado;");
+        $stmt->execute([":id_abogado" => $id_abogado]);
+        $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $resultado;
+    }
 ?>
