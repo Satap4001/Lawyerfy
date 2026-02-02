@@ -10,7 +10,9 @@
     session_start();
 ?>
 <body>
+
 <?php 
+    include 'header.php'; 
     include_once('../backend/bd.php');
 
     $abogado = getDatosAbo($_SESSION['id_abogado']);
@@ -19,10 +21,6 @@
         die("Abogado no encontrado");
     }
 ?>
-<nav>
-    <div style="font-size: 1.5rem; font-weight: bold;">Lawyerfy</div>
-    <div><i class="fa-solid fa-circle-user fa-xl"></i></div>
-</nav>
 
 <div class="container">
     <div class="profile-card">
