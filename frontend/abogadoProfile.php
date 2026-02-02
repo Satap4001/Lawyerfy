@@ -15,7 +15,6 @@
     include 'header.php'; 
     include_once('../backend/bd.php');
 
-    echo "ID en sesion: " . $_SESSION['id_abogado']; 
     $abogado = getDatosAbo($_SESSION['id_abogado']);
 
     if (!$abogado) {
@@ -33,7 +32,7 @@
                 <div class="verified-icon"><i class="fa-solid fa-check"></i></div>
             </div>
             <div class="header-text">
-                <h1>Abog. <?= $abogado['nombre']." ". $abogado['apellido'] . $_SESSION['id_abogado'] ?></h1>
+                <h1>Abog. <?= $abogado['nombre']." ". $abogado['apellido']?></h1>
                 <p>Especialista en <?= $abogado['especialidad']?></p>
                 <div style="margin-top: 10px;">
                     <span class="stars"><i class="fa-solid fa-star"></i> 4.9</span>

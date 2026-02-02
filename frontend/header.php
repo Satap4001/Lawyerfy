@@ -139,7 +139,7 @@ body {
     </div>
 
     <div class="user-area">
-        <a href="perfil-cliente-nuevo.php" class="profile">
+        <a href="abogadoProfile.php" class="profile">
             <div class="avatar">AU</div>
             <span>Mi perfil</span>
         </a>
