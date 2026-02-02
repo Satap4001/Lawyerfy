@@ -126,6 +126,9 @@
         </div>
     </aside>
 </div>
+<?php 
+    include 'footer.php'; 
+?>
 
 <script>
     function openTab(evt, tabName) {
