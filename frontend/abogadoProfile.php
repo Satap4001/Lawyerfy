@@ -15,6 +15,7 @@
     include 'header.php'; 
     include_once('../backend/bd.php');
 
+    echo "ID en sesion: " . $_SESSION['id_abogado']; 
     $abogado = getDatosAbo($_SESSION['id_abogado']);
 
     if (!$abogado) {

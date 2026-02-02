@@ -1,0 +1,52 @@
+/* Reutilizamos las variables de tus archivos */
+:root {
+    --primary-blue: #1e3a8a; /* de loginStyle.css */
+    --accent-gold: #d4af37;  /* de aboProfilecss.css */
+}
+
+.container {
+    /* Ajustamos el grid para que el feed sea predominante como en Facebook */
+    grid-template-columns: 1fr 320px;
+}
+
+.profile-header-content {
+    background: white;
+}
+
+.header-text h1 {
+    color: var(--primary-blue);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.sidebar-cliente .sidebar-card h3 {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+}
+
+.info-item {
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: #475569;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #e2e8f0;
+    margin: 15px 0;
+}
+
+/* Estilo para los botones de navegación activos */
+.nav-links a.active {
+    color: var(--primary-blue);
+    border-bottom: 2px solid var(--primary-blue);
+}
+
+@media (max-width: 900px) {
+    .container {
+        display: block;
+    }
+    .sidebar-cliente {
+        margin-top: 20px;
+    }
+}

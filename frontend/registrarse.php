@@ -17,12 +17,11 @@
       <button id="btnAbogado">Abogado</button>
     </div>
 
-    <!-- FORMULARIO CLIENTE --> 
-    <?php //PARA MOSTRAR MENSAJE SI RECIBE UN ERROR
+    <?php 
     session_start();
     if (isset($_SESSION['error'])) {
         echo "<div class='error'>".$_SESSION['error']."</div>";
-        unset($_SESSION['error']); // para que el mensaje desaparezca después de mostrarlo
+        unset($_SESSION['error']); 
     }
     ?>
     <form id="cliente" class="active" action = "../backend/registrarseBack.php" method="post">
