@@ -18,6 +18,7 @@
     if (!$abogado) {
         die("Abogado no encontrado");
     }
+    //
 ?>
 <nav>
     <div style="font-size: 1.5rem; font-weight: bold;">Lawyerfy</div>

@@ -85,7 +85,7 @@
         $stmt = $pdo->prepare("SELECT * FROM cliente WHERE email = :email AND contrasena = :contrasena");
         $stmt->execute(["email" => $email , "contrasena" => $userPass]);
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
-        
+        //
         if($usuario){
             $_SESSION["nombre"] = $usuario['nombre'];
             $_SESSION["apellido"] = $usuario['apellido'];
