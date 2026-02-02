@@ -12,13 +12,10 @@
 ?>
 <body>
     <?php
+    include 'header.php'; 
         require_once('../backend/bd.php');
         $publicaciones = getAllPublicaciones();
     ?>
-    <!-- HEADER -->
-   <?php 
-    include 'header.php'; 
-?>
 
     <!-- MAIN CONTENT -->
     <main class="container">
@@ -106,6 +103,9 @@
             window.location.href = "abogadoProfile.php"; //AQUI HAY QUE PONER UN IF QUE COMPRUEBE SI ERES ABOGADO O CLIENTE
         }
     </script>
+            <?php 
+        include 'footer.php'; 
+    ?>
 </body>
 
 </html>

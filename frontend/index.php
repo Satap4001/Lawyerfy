@@ -56,10 +56,9 @@
         <a href="" class="btn btn-primary">Contactar con un abogado</a>
     </section>
 
-    <footer>
-        <p>&copy; 2026 Bufete Jurídico Profesional. Todos los derechos reservados.</p>
-        <p style="margin-top: 10px; font-size: 0.8rem;">Calle de la Justicia 123, Madrid | Tel: 900 000 000</p>
-    </footer>
+    <?php 
+        include 'footer.php'; 
+    ?>
 
 </body>
 
