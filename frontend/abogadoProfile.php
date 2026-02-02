@@ -7,11 +7,7 @@
     <link href="CSS/aboProfilecss.css" rel="stylesheet">
 </head>
 <body>
-
-<nav>
-    <div style="font-size: 1.5rem; font-weight: bold;">Lawyerfy</div>
-    <div><i class="fa-solid fa-circle-user fa-xl"></i></div>
-</nav>
+    <?php include 'header.php'; ?>
 
 <div class="container">
     <div class="profile-card">
