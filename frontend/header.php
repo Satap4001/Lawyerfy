@@ -131,7 +131,7 @@ body {
 <body>
 
 <header class="header">
-    <a href="#" class="logo">Lawyerfy</a>
+    <a href="pagePublicaciones.php" class="logo">Lawyerfy</a>
 
     <div class="search">
         <i class="fas fa-search"></i>
@@ -139,15 +139,18 @@ body {
     </div>
 
     <div class="user-area">
-        <a href="#" class="profile">
+        <a href="perfil-cliente-nuevo.php" class="profile">
             <div class="avatar">AU</div>
             <span>Mi perfil</span>
         </a>
 
-        <button class="logout">
-            <i class="fas fa-sign-out-alt"></i>
-            Salir
-        </button>
+       <form action="index.php" method="post">
+    <button type="submit" class="logout">
+        <i class="fas fa-sign-out-alt"></i>
+        Salir
+    </button>
+</form>
+
     </div>
 </header>
 
